@@ -6,6 +6,7 @@ import 'package:notes/screens/login/login.dart';
 import 'package:notes/services/data.dart';
 import 'package:notes/services/shared_pref.dart';
 import 'package:provider/provider.dart';
+import 'localization/localization_constants.dart';
 import 'themes/dark_theme.dart';
 import 'themes/light_theme.dart';
 
@@ -45,15 +46,33 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void didChangeDependencies() {
+    getLocale().then((locale) {
+      setState(() {
+        this._locale = locale;
+      });
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var data = context.watch<SharedPref>();
+
+    if (_locale == null) {
+      return Container(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    } else {
 
     return MaterialApp(
       title: 'Notes Management',
       home: Login(),
       locale: _locale,
       supportedLocales: [
-        Locale('en', 'GB'),
+        Locale('en', 'US'),
         Locale('vi', 'VN'),
         Locale('fr', 'FR'),
       ],
@@ -76,5 +95,6 @@ class _MyAppState extends State<MyApp> {
       theme: data.isNight ? darkTheme : lightTheme,
       debugShowCheckedModeBanner: false,
     );
+    }
   }
 }
