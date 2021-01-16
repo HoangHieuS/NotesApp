@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'localization/localization_constants.dart';
 import 'themes/dark_theme.dart';
 import 'themes/light_theme.dart';
+// import 'package:notes/screens/home/home.dart';
 
 Future main() async {
   // WidgetsFlutterBinding.ensureInitialized();

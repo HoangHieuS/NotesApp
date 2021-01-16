@@ -12,7 +12,7 @@ import 'package:notes/themes/colors.dart';
 import 'components/list_view.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
-import 'package:notes/localization/demo_localization.dart';
+// import 'package:notes/localization/demo_localization.dart';
 import 'package:notes/localization/localization_constants.dart';
 
 class HomeScreen extends StatefulWidget {
